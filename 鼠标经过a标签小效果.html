@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+  body{
+    position: relative;
+  }
+  .mouse{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #000;
+    opacity: 0.1;
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    transition: width 0.2s ease-in, height 0.2s ease-in, opacity 0.2s ease-in;
+  }
+  .hover-a{
+    width: 80px;
+    height: 80px;
+    opacity: 0.2;
+  }
+  .a{
+    width: 100px;
+    height: 100px;
+    background: red;
+    display: block;
+  }
+</style>
+<body>
+  <div class="mouse"></div>
+  <a href="https://www.baidu.com" class="a"></a>
+</body>
+<script>
+  var mouse = document.querySelector('.mouse')
+  document.addEventListener('mousemove', (e) => {
+    mouse.style.cssText = 'top:' + e.pageY + 'px;left:' + e.pageX + 'px;'
+    if (e.target.href) {
+      mouse.classList.add('hover-a')
+    } else {
+      mouse.classList.remove('hover-a')
+    }
+  })
+</script>
+</html>
